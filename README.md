@@ -1,4 +1,4 @@
-# chess-clock-study
+# Rook
 a chess clock designed to be the ultimate study partner.
 inspired by [this blog post](https://www.ntnbr.com/10/) by Nathan Brown
 (see below for an explanation of the Chess Clock Method)
