@@ -1,29 +1,30 @@
 # Rook
 a chess clock designed to be the ultimate study partner.
-inspired by [this blog post](https://www.ntnbr.com/10/) by Nathan Brown
-(see below for an explanation of the Chess Clock Method)
+
+inspired by [this blog post](https://www.ntnbr.com/10/) by Nathan Brown.
+
 built *AI-free* with HTML, CSS, and JavaScript.
 
----
+
+
 
 ## current features
+(none for now... the project's only just been begun!)
 
 
----
 
 ## future features
+- the (superior) Chess Clock Method — never break your flow state again.
 - automatic timer switching — unlike a standard chess clock, these timers will automatically set the other one to start running when it hits zero.
 - simple — no overcomplications, just set the timers and run it.
 - dark/light mode — whichever you prefer.
 - timer customization — select from a handful of presets, or set your own times.
 - sound effects — minimal, but highly interactive experience.
 
----
 
 ## license
 MIT License — see LICENSE for details.
 
----
 
 ## what is the Chess Clock Method?
 (you may want to read the original blog post linked above)
@@ -34,9 +35,8 @@ however, this system is flawed: having strictly set breaks interrupts the natura
 
 the chess clock method is designed to allow the user to take breaks whenever they want while still providing the structure of Pomodoro.
 
----
 
-### how does it work?
+### *how does it work?*
 
 you have two timers: a "working" timer and a "break" timer.
 
