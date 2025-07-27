@@ -1,10 +1,20 @@
 const timer = document.querySelector(".timer");
 
-let minutes = 10;
-let hours = 4;
+let minutes = 30;
+let hours = 0;
 
 let paddedMinutes;
 let paddedHours;
+
+const interval = 1000;
+
+function timerDone() {
+    if (minutes === 0 && hours === 0) {
+        return true
+    } else {
+        return false
+    }
+}
 
 function updateTimer() {
 
@@ -18,7 +28,7 @@ function updateTimer() {
 
     timer.textContent = `${paddedHours}:${paddedMinutes}`
 
-    if (minutes === 0) {
+    if (minutes === 0 && hours !== 0) {
         hours--;
         minutes = 59;
     } else {
@@ -26,12 +36,19 @@ function updateTimer() {
     }
 
     
+    if (timerDone()) {
+        setTimeout(() => {timer.textContent = "00:00"}, 1000)
+        return
+    } else {
+        setTimeout(updateTimer, interval);
+    }
 }
 
-const interval = 1000;
 
-setInterval(updateTimer, interval);
+updateTimer();
+
+// setInterval(updateTimer, interval);
 
 // while (true) {
-//     setTimeout(updateTimer, 1000);
+
 // }
