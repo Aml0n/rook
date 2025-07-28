@@ -1,15 +1,15 @@
 const timer = document.querySelector(".timer");
 
-let minutes = 30;
-let hours = 0;
+let seconds = 30;
+let minutes = 0;
 
+let paddedSeconds;
 let paddedMinutes;
-let paddedHours;
 
 const interval = 1000;
 
 function timerDone() {
-    if (minutes === 0 && hours === 0) {
+    if (seconds === 0 && minutes === 0) {
         return true
     } else {
         return false
@@ -18,21 +18,21 @@ function timerDone() {
 
 function updateTimer() {
 
-    paddedMinutes = String(minutes).padStart(2, "0");
-    if (hours < 10) {
-        paddedHours = String(hours).padStart(2, "0")
+    paddedSeconds = String(seconds).padStart(2, "0");
+    if (minutes < 10) {
+        paddedMinutes = String(minutes).padStart(2, "0")
     } else {
-        paddedHours = String(hours);
+        paddedMinutes = String(minutes);
     }
     
 
-    timer.textContent = `${paddedHours}:${paddedMinutes}`
+    timer.textContent = `${paddedMinutes}:${paddedSeconds}`
 
-    if (minutes === 0 && hours !== 0) {
-        hours--;
-        minutes = 59;
-    } else {
+    if (seconds === 0 && minutes !== 0) {
         minutes--;
+        seconds = 59;
+    } else {
+        seconds--;
     }
 
     
