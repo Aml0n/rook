@@ -16,16 +16,14 @@ function Timer(startingTimeSeconds, startingTimeMinutes, htmlTimer, isPaused) {
     this.timerDone = false;
 
     this.updateTimer = function() {
-        
+  
         if (this.isPaused === true) {
             return
         }
         if (this.timerDone) {
             return
         }
-        
-
-        this.isPaused = false;
+        // console.log(`${this.htmlTimer}`)
 
         let paddedMinutes;
         let paddedSeconds = String(this.elapsedTimeSeconds).padStart(2, "0");
@@ -51,7 +49,7 @@ function Timer(startingTimeSeconds, startingTimeMinutes, htmlTimer, isPaused) {
             // console.log(`${this.elapsedTimeSeconds}, ${this.elapsedTimeMinutes}`)
             return
         } else {
-            setTimeout(() => this.updateTimer(), intervalMs);
+            this.timeoutId = setTimeout(() => this.updateTimer(), intervalMs);
             // setTimeout(this.updateTimer, intervalMs)
             // console.log(`${this.elapsedTimeSeconds}, ${this.elapsedTimeMinutes}`)
         }
@@ -72,12 +70,16 @@ switchButton.addEventListener("click", () => {
     } else if (timerOne.isPaused) {
         timerOne.isPaused = false;
         timerTwo.isPaused = true;
+        clearTimeout(timerTwo.timeoutId);
         timerOne.updateTimer();
+        // console.log("hello  1");
 
     } else if (timerTwo.isPaused) {
         timerTwo.isPaused = false;
         timerOne.isPaused = true;
+        clearTimeout(timerOne.timeoutId);
         timerTwo.updateTimer();
+        // console.log("hello  2");
     }
 })
 
