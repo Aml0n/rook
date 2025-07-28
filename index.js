@@ -1,10 +1,11 @@
-const timer = document.querySelector(".timer");
+const timerOneP = document.getElementById("timer1");
+const timerTwoP = document.getElementById("timer2");
 const intervalMs = 1000;
 
-
-function Timer(startingTimeSeconds, startingTimeMinutes) {
+function Timer(startingTimeSeconds, startingTimeMinutes, htmlTimer) {
     this.startingTimeSeconds = startingTimeSeconds;
     this.startingTimeMinutes = startingTimeMinutes;
+    this.htmlTimer = htmlTimer;
 
 
     this.elapsedTimeSeconds = this.startingTimeSeconds;
@@ -20,7 +21,7 @@ function Timer(startingTimeSeconds, startingTimeMinutes) {
             paddedMinutes = String(this.elapsedTimeMinutes);
         }
 
-        timer.textContent = `${paddedMinutes}:${paddedSeconds}`
+        this.htmlTimer.textContent = `${paddedMinutes}:${paddedSeconds}`
 
         if (this.elapsedTimeSeconds === 0 && this.elapsedTimeMinutes !== 0) {
             this.elapsedTimeMinutes--;
@@ -29,8 +30,8 @@ function Timer(startingTimeSeconds, startingTimeMinutes) {
             this.elapsedTimeSeconds--;
         }
 
-        if (!(() => this.timerDone)) {
-            setTimeout(() => {timer.textContent = "00:00"}, 1000)
+        if (this.elapsedTimeSeconds === 0 && this.elapsedTimeMinutes === 0) {
+            setTimeout(() => {this.htmlTimer.textContent = "00:00"}, 1000)
             // console.log("hi");
             // console.log(`${this.elapsedTimeSeconds}, ${this.elapsedTimeMinutes}`)
             return
@@ -51,6 +52,6 @@ function Timer(startingTimeSeconds, startingTimeMinutes) {
 
 };
 
-let timerOne = new Timer(0, 1)
+let timerOne = new Timer(10, 0, timerOneP)
 
 timerOne.updateTimer()
