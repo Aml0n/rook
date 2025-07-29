@@ -4,11 +4,15 @@ const intervalMs = 1000;
 
 let timersRunning = true;
 
-function Timer(startingTimeSeconds, startingTimeMinutes, htmlTimer, isPaused) {
+function Timer(startingTimeSeconds, startingTimeMinutes, htmlTimer, isPaused, onComplete) {
     this.startingTimeSeconds = startingTimeSeconds;
     this.startingTimeMinutes = startingTimeMinutes;
     this.htmlTimer = htmlTimer;
+    this.onComplete = onComplete;
 
+    this.timerCompleted = function() {
+
+    }
 
     this.elapsedTimeSeconds = this.startingTimeSeconds;
     this.elapsedTimeMinutes = this.startingTimeMinutes;
@@ -41,9 +45,13 @@ function Timer(startingTimeSeconds, startingTimeMinutes, htmlTimer, isPaused) {
         } else {
             this.elapsedTimeSeconds--;
         }
-
+        // TODO: fix difference between displayed time and variables
+    
         if (this.elapsedTimeSeconds === 0 && this.elapsedTimeMinutes === 0) {
-            setTimeout(() => {this.htmlTimer.textContent = "00:00"}, 1000)
+            setTimeout(() => {
+                this.htmlTimer.textContent = "00:00";
+                this.onComplete();
+            }, 1000)
             this.timerDone = true;
             // console.log("hi");
             // console.log(`${this.elapsedTimeSeconds}, ${this.elapsedTimeMinutes}`)
@@ -57,8 +65,6 @@ function Timer(startingTimeSeconds, startingTimeMinutes, htmlTimer, isPaused) {
 
 };
 
-let timerStatus;
-
 function switchTimers(switchOn, switchOff) {
     switchOn.isPaused = false;
     switchOff.isPaused = true;
@@ -68,9 +74,13 @@ function switchTimers(switchOn, switchOff) {
     
 };
 
-let timerOne = new Timer(10, 0, timerOneP, false);
+let timerOne = new Timer(10, 0, timerOneP, false, () => {
+    switchTimers(timerTwo, timerOne);
+});
 
-let timerTwo = new Timer(50, 0, timerTwoP, true);
+let timerTwo = new Timer(50, 0, timerTwoP, true, () => {
+    switchTimers(timerOne, timerTwo);
+});
 
 const switchButton = document.querySelector(".switch");
 let switchIsEnabled = true;
