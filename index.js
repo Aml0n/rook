@@ -22,10 +22,10 @@ function Timer(startingTimeSeconds, startingTimeMinutes, htmlTimer, isPaused, on
     this.updateTimer = function() {
 
         if (this.isPaused === true) {
-            return "paused";
+            return;
         }
         if (this.timerDone) {
-            return "done";
+            return;
         }
 
         if (this.elapsedTimeSeconds === 0 && this.elapsedTimeMinutes !== 0) {
@@ -45,7 +45,7 @@ function Timer(startingTimeSeconds, startingTimeMinutes, htmlTimer, isPaused, on
             this.timerDone = true;
             // console.log("hi");
             // console.log(`${this.elapsedTimeSeconds}, ${this.elapsedTimeMinutes}`)
-            return "done";
+            return;
         } else {
             this.timeoutId = setTimeout(() => this.updateTimer(), intervalMs);
             // setTimeout(this.updateTimer, intervalMs)
@@ -56,7 +56,7 @@ function Timer(startingTimeSeconds, startingTimeMinutes, htmlTimer, isPaused, on
 };
 
 function switchTimers(switchOn, switchOff) {
-    switchOn.htmlTimer.textContent = `${switchOn.elapsedTimeMinutes}:${switchOn.elapsedTimeSeconds}`
+    switchOn.htmlTimer.textContent = `${String(switchOn.elapsedTimeMinutes).padStart(2, "0")}:${String(switchOn.elapsedTimeSeconds).padStart(2, "0")}`
     switchOn.isPaused = false;
     switchOff.isPaused = true;
     clearTimeout(switchOff.timeoutId);
@@ -70,7 +70,7 @@ let timerOne = new Timer(10, 0, timerOneP, false, () => {
     switchTimers(timerTwo, timerOne);
 });
 
-let timerTwo = new Timer(50, 0, timerTwoP, true, () => {
+let timerTwo = new Timer(10, 0, timerTwoP, true, () => {
     switchTimers(timerOne, timerTwo);
 });
 
