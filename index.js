@@ -18,26 +18,15 @@ function Timer(startingTimeSeconds, startingTimeMinutes, htmlTimer, isPaused, on
     this.elapsedTimeMinutes = this.startingTimeMinutes;
     this.isPaused = isPaused;
     this.timerDone = false;
-
+    
     this.updateTimer = function() {
-  
+
         if (this.isPaused === true) {
             return "paused";
         }
         if (this.timerDone) {
             return "done";
         }
-        // console.log(`${this.htmlTimer}`)
-
-        let paddedMinutes;
-        let paddedSeconds = String(this.elapsedTimeSeconds).padStart(2, "0");
-        if (this.elapsedTimeMinutes < 10) {
-            paddedMinutes = String(this.elapsedTimeMinutes).padStart(2, "0")
-        } else {
-            paddedMinutes = String(this.elapsedTimeMinutes);
-        }
-
-        this.htmlTimer.textContent = `${paddedMinutes}:${paddedSeconds}`
 
         if (this.elapsedTimeSeconds === 0 && this.elapsedTimeMinutes !== 0) {
             this.elapsedTimeMinutes--;
@@ -45,8 +34,9 @@ function Timer(startingTimeSeconds, startingTimeMinutes, htmlTimer, isPaused, on
         } else {
             this.elapsedTimeSeconds--;
         }
-        // TODO: fix difference between displayed time and variables
-    
+ 
+        this.htmlTimer.textContent = `${String(this.elapsedTimeMinutes).padStart(2, "0")}:${String(this.elapsedTimeSeconds).padStart(2, "0")}`
+
         if (this.elapsedTimeSeconds === 0 && this.elapsedTimeMinutes === 0) {
             setTimeout(() => {
                 this.htmlTimer.textContent = "00:00";
@@ -60,17 +50,19 @@ function Timer(startingTimeSeconds, startingTimeMinutes, htmlTimer, isPaused, on
             this.timeoutId = setTimeout(() => this.updateTimer(), intervalMs);
             // setTimeout(this.updateTimer, intervalMs)
             // console.log(`${this.elapsedTimeSeconds}, ${this.elapsedTimeMinutes}`)
-        }
-    };
+        }        
+    }
 
 };
 
 function switchTimers(switchOn, switchOff) {
+    switchOn.htmlTimer.textContent = `${switchOn.elapsedTimeMinutes}:${switchOn.elapsedTimeSeconds}`
     switchOn.isPaused = false;
     switchOff.isPaused = true;
     clearTimeout(switchOff.timeoutId);
     clearTimeout(switchOn.timeoutId);
-    switchOn.updateTimer();
+
+    switchOn.timeoutId = setTimeout(switchOn.updateTimer(), 1000);
     
 };
 
