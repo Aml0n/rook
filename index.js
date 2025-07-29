@@ -73,15 +73,22 @@ let timerOne = new Timer(10, 0, timerOneP, false);
 let timerTwo = new Timer(50, 0, timerTwoP, true);
 
 const switchButton = document.querySelector(".switch");
+let switchIsEnabled = true;
 switchButton.addEventListener("click", () => {
+    if (!switchIsEnabled) {
+        return;
+    }
+
     if (!timersRunning) {
         timerOne.isPaused = false;
         timerOne.updateTimer();
 
     } else if (timerTwo.timerDone) {
         switchTimers(timerOne, timerTwo);
+        switchIsEnabled = false;
     } else if (timerOne.timerDone) {
         switchTimers(timerTwo, timerOne);
+        switchIsEnabled = false;
     } else if (timerOne.isPaused) {
         switchTimers(timerOne, timerTwo);
         // console.log("hello  1");
