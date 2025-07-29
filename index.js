@@ -38,11 +38,9 @@ function Timer(startingTimeSeconds, startingTimeMinutes, htmlTimer, isPaused, on
         this.htmlTimer.textContent = `${String(this.elapsedTimeMinutes).padStart(2, "0")}:${String(this.elapsedTimeSeconds).padStart(2, "0")}`
 
         if (this.elapsedTimeSeconds === 0 && this.elapsedTimeMinutes === 0) {
-            setTimeout(() => {
-                this.htmlTimer.textContent = "00:00";
-                this.onComplete();
-            }, 1000)
+            this.onComplete();
             this.timerDone = true;
+            switchIsEnabled = false;
             // console.log("hi");
             // console.log(`${this.elapsedTimeSeconds}, ${this.elapsedTimeMinutes}`)
             return;
