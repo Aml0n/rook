@@ -18,10 +18,10 @@ function Timer(startingTimeSeconds, startingTimeMinutes, htmlTimer, isPaused) {
     this.updateTimer = function() {
   
         if (this.isPaused === true) {
-            return
+            return "paused";
         }
         if (this.timerDone) {
-            return
+            return "done";
         }
         // console.log(`${this.htmlTimer}`)
 
@@ -47,7 +47,7 @@ function Timer(startingTimeSeconds, startingTimeMinutes, htmlTimer, isPaused) {
             this.timerDone = true;
             // console.log("hi");
             // console.log(`${this.elapsedTimeSeconds}, ${this.elapsedTimeMinutes}`)
-            return
+            return "done";
         } else {
             this.timeoutId = setTimeout(() => this.updateTimer(), intervalMs);
             // setTimeout(this.updateTimer, intervalMs)
@@ -55,6 +55,17 @@ function Timer(startingTimeSeconds, startingTimeMinutes, htmlTimer, isPaused) {
         }
     };
 
+};
+
+let timerStatus;
+
+function switchTimers(switchOn, switchOff) {
+    switchOn.isPaused = false;
+    switchOff.isPaused = true;
+    clearTimeout(switchOff.timeoutId);
+    clearTimeout(switchOn.timeoutId);
+    switchOn.updateTimer();
+    
 };
 
 let timerOne = new Timer(10, 0, timerOneP, false);
@@ -67,18 +78,16 @@ switchButton.addEventListener("click", () => {
         timerOne.isPaused = false;
         timerOne.updateTimer();
 
+    } else if (timerTwo.timerDone) {
+        switchTimers(timerOne, timerTwo);
+    } else if (timerOne.timerDone) {
+        switchTimers(timerTwo, timerOne);
     } else if (timerOne.isPaused) {
-        timerOne.isPaused = false;
-        timerTwo.isPaused = true;
-        clearTimeout(timerTwo.timeoutId);
-        timerOne.updateTimer();
+        switchTimers(timerOne, timerTwo);
         // console.log("hello  1");
 
     } else if (timerTwo.isPaused) {
-        timerTwo.isPaused = false;
-        timerOne.isPaused = true;
-        clearTimeout(timerOne.timeoutId);
-        timerTwo.updateTimer();
+        switchTimers(timerTwo, timerOne);
         // console.log("hello  2");
     }
 })
