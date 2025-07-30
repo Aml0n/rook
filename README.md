@@ -9,16 +9,14 @@ built *AI-free* with HTML, CSS, and JavaScript.
 
 
 ## current features
-(none for now... the project's only just been begun!)
-
+- the (superior) Chess Clock Method — never break your flow state again.
+- automatic timer switching — unlike a standard chess clock, these timers will automatically set the other one to start running when it hits zero.
+- timer customization — select from a handful of presets, or set your own times.
 
 
 ## future features
-- the (superior) Chess Clock Method — never break your flow state again.
-- automatic timer switching — unlike a standard chess clock, these timers will automatically set the other one to start running when it hits zero.
 - simple — no overcomplications, just set the timers and run it.
 - dark/light mode — whichever you prefer.
-- timer customization — select from a handful of presets, or set your own times.
 - sound effects — minimal, but highly interactive experience.
 
 
