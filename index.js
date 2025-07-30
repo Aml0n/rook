@@ -16,16 +16,18 @@ const timerOneFieldSeconds = document.querySelector(".timerOne > .seconds");
 const timerTwoFieldSeconds = document.querySelector(".timerTwo > .seconds");
 // const timerTwoValueSeconds = timerTwoFieldSeconds.value;
 
-const timerOneError = document.querySelector(".timerOne .error");
-const timerTwoError = document.querySelector(".timerTwo .error");
-
 let timersPaused = true;                
 
-function Timer(startingTimeSeconds, startingTimeMinutes, htmlTimer, isPaused, onComplete) {
+function Timer(startingTimeSeconds, startingTimeMinutes, htmlTimer, fieldSeconds, fieldMinutes, submitButton, errorP, isPaused, onComplete) {
     this.startingTimeSeconds = startingTimeSeconds;
     this.startingTimeMinutes = startingTimeMinutes;
     this.htmlTimer = htmlTimer;
+    this.errorP = errorP;
     this.onComplete = onComplete;
+
+    this.fieldSeconds = fieldSeconds;
+    this.fieldMinutes = fieldMinutes;
+    this.submitButton = submitButton;
 
     this.timerCompleted = function() {
 
@@ -36,6 +38,17 @@ function Timer(startingTimeSeconds, startingTimeMinutes, htmlTimer, isPaused, on
     this.isPaused = isPaused;
     this.timerDone = false;
     
+    this.submitButton.addEventListener("click", () => {
+        if (this.fieldMinutes.value === "" || this.fieldSeconds.value === "") {
+            this.errorP.textContent = "please type a number"
+            
+        } else {
+            this.elapsedTimeMinutes = Number(this.fieldMinutes.value);
+            this.elapsedTimeSeconds = (Number(this.fieldSeconds.value) + 1);
+            this.errorP.textContent = "";
+        }
+    })
+
     this.updateTimer = function() {
 
         if (this.isPaused === true) {
@@ -82,11 +95,17 @@ function switchTimers(switchOn, switchOff) {
     
 };
 
-let timerOne = new Timer(10, 0, timerOneP, false, () => {
-    switchTimers(timerTwo, timerOne);
+let timerOne = new Timer(10, 0, timerOneP, 
+    timerOneFieldSeconds, timerOneFieldMinutes, 
+    timerOneSubmit, document.querySelector(".timerOne .error"),
+    false, () => {
+        switchTimers(timerTwo, timerOne);
 });
 
-let timerTwo = new Timer(10, 0, timerTwoP, true, () => {
+let timerTwo = new Timer(10, 0, timerTwoP, 
+    timerTwoFieldSeconds, timerTwoFieldMinutes, 
+    timerTwoSubmit, document.querySelector(".timerTwo .error"),
+    true, () => {
     switchTimers(timerOne, timerTwo);
 });
 
@@ -143,26 +162,15 @@ pauseButton.addEventListener("click", () => {
 
 });
 
-timerOneSubmit.addEventListener("click", () => {
-    if (timerOneFieldMinutes.value === "" || timerOneFieldSeconds.value === "") {
-        timerOneError.textContent = "please type a number"
-        
-    } else {
-        timerOne.elapsedTimeMinutes = Number(timerOneFieldMinutes.value);
-        timerOne.elapsedTimeSeconds = (Number(timerOneFieldSeconds.value) + 1);
-        timerOneError.textContent = "";
-    }
-})
-
-timerTwoSubmit.addEventListener("click", () => {
-    if (timerTwoFieldMinutes.value === "" || timerTwoFieldSeconds.value === "") {
-        timerTwoError.textContent = "please type a number"
-    } else {
-        timerTwo.elapsedTimeMinutes = Number(timerTwoFieldMinutes.value);
-        timerTwo.elapsedTimeSeconds = (Number(timerTwoFieldSeconds.value) + 1);
-        timerTwoError.textContent = "";
-    }
-})
+// timerTwoSubmit.addEventListener("click", () => {
+//     if (timerTwoFieldMinutes.value === "" || timerTwoFieldSeconds.value === "") {
+//         timerTwoError.textContent = "please type a number"
+//     } else {
+//         timerTwo.elapsedTimeMinutes = Number(timerTwoFieldMinutes.value);
+//         timerTwo.elapsedTimeSeconds = (Number(timerTwoFieldSeconds.value) + 1);
+//         timerTwoError.textContent = "";
+//     }
+// })
 // timerOne.updateTimer()
 
 // timerTwo.updateTimer()
@@ -175,8 +183,4 @@ timerTwoSubmit.addEventListener("click", () => {
 
     switchIsEnabled = false;
 
-    timerOneFieldSeconds.value
-
-    timerTwo.startingTimeMinutes = timerOneFieldMinutes.value;
-    timerTwo.startingTimeSeconds = timerOneFieldSeconds.value;
 // TODO: add html variables to the timer object
