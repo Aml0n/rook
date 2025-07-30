@@ -3,7 +3,23 @@ const timerTwoP = document.getElementById("timer2");
 const intervalMs = 1000;
 const pauseButton = document.querySelector(".pause");
 
-let timersPaused = true;
+const timerOneSubmit = document.querySelector(".timerOne > button");
+const timerTwoSubmit = document.querySelector(".timerTwo > button");
+
+const timerOneFieldMinutes = document.querySelector(".timerOne > .minutes")
+// const timerOneValueMinutes = timerOneFieldMinutes.value;
+const timerTwoFieldMinutes = document.querySelector(".timerTwo > .minutes");
+// const timerTwoValueMinutes = timerTwoFieldMinutes.value;
+
+const timerOneFieldSeconds = document.querySelector(".timerOne > .seconds");
+// const timerOneValueSeconds = timerOneFieldMinutes.value;
+const timerTwoFieldSeconds = document.querySelector(".timerTwo > .seconds");
+// const timerTwoValueSeconds = timerTwoFieldSeconds.value;
+
+const timerOneError = document.querySelector(".timerOne .error");
+const timerTwoError = document.querySelector(".timerTwo .error");
+
+let timersPaused = true;                
 
 function Timer(startingTimeSeconds, startingTimeMinutes, htmlTimer, isPaused, onComplete) {
     this.startingTimeSeconds = startingTimeSeconds;
@@ -125,16 +141,36 @@ pauseButton.addEventListener("click", () => {
         pauseButton.textContent = "unpause"
     }
 
+});
 
+timerOneSubmit.addEventListener("click", () => {
+    if (timerOneFieldMinutes.value === "" || timerOneFieldMinutes.value === "") {
+        timerOneError.textContent = "please type a number"
+        
+    } else {
+        timerOne.elapsedTimeMinutes = timerOneFieldMinutes.value;
+        timerOne.elapsedTimeSeconds = timerOneFieldSeconds.value;
+    }
+})
+
+timerTwoSubmit.addEventListener("click", () => {
+    timerTwo.elapsedTimeMinutes = timerTwoFieldMinutes.value;
+    timerTwo.elapsedTimeSeconds = timerTwoFieldSeconds.value;
 })
 // timerOne.updateTimer()
 
 // timerTwo.updateTimer()
 
 // * init
+
     timersPaused = true;
     timerOne.isPaused = true;
     timerTwo.isPaused = true;
 
     switchIsEnabled = false;
-    
+
+    timerOneFieldSeconds.value
+
+    timerTwo.startingTimeMinutes = timerOneFieldMinutes.value;
+    timerTwo.startingTimeSeconds = timerOneFieldSeconds.value;
+// TODO: add html variables to the timer object

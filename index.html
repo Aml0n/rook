@@ -11,9 +11,20 @@
   <body>
     <main>
         <h1>Rook</h1>  
-
-        <p id="timer1">1</p>
-        <p id="timer2">2</p>
+        <div class="timerOne">
+            <p id="timer1">1</p>
+            <input type="number" class="minutes">
+            <input type="number" class="seconds">
+            <button class="submitButton">submit</button>
+            <p class="error"></p>
+        </div>
+        <div class="timerTwo">
+            <p id="timer2">2</p>
+            <input type="number" class="minutes">
+            <input type="number" class="seconds">
+            <button class="submitButton">submit</button>
+            <p class="error"></p>
+        </div>
         <button class="switch">switch</button>
         <button class="pause">start</button>
     </main>
