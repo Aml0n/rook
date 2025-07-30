@@ -3,19 +3,6 @@ const timerTwoP = document.getElementById("timer2");
 const intervalMs = 1000;
 const pauseButton = document.querySelector(".pause");
 
-const timerOneSubmit = document.querySelector(".timerOne > button");
-const timerTwoSubmit = document.querySelector(".timerTwo > button");
-
-const timerOneFieldMinutes = document.querySelector(".timerOne > .minutes")
-// const timerOneValueMinutes = timerOneFieldMinutes.value;
-const timerTwoFieldMinutes = document.querySelector(".timerTwo > .minutes");
-// const timerTwoValueMinutes = timerTwoFieldMinutes.value;
-
-const timerOneFieldSeconds = document.querySelector(".timerOne > .seconds");
-// const timerOneValueSeconds = timerOneFieldMinutes.value;
-const timerTwoFieldSeconds = document.querySelector(".timerTwo > .seconds");
-// const timerTwoValueSeconds = timerTwoFieldSeconds.value;
-
 let timersPaused = true;                
 
 function Timer(startingTimeSeconds, startingTimeMinutes, htmlTimer, fieldSeconds, fieldMinutes, submitButton, errorP, isPaused, onComplete) {
@@ -95,16 +82,20 @@ function switchTimers(switchOn, switchOff) {
     
 };
 
-let timerOne = new Timer(10, 0, timerOneP, 
-    timerOneFieldSeconds, timerOneFieldMinutes, 
-    timerOneSubmit, document.querySelector(".timerOne .error"),
+let timerOne = new Timer(70, 0, timerOneP, 
+    document.querySelector(".timerOne > .seconds"), 
+    document.querySelector(".timerOne > .minutes"), 
+    document.querySelector(".timerOne > button"), 
+    document.querySelector(".timerOne .error"),
     false, () => {
         switchTimers(timerTwo, timerOne);
 });
 
-let timerTwo = new Timer(10, 0, timerTwoP, 
-    timerTwoFieldSeconds, timerTwoFieldMinutes, 
-    timerTwoSubmit, document.querySelector(".timerTwo .error"),
+let timerTwo = new Timer(20, 0, timerTwoP, 
+    document.querySelector(".timerTwo > .seconds"), 
+    document.querySelector(".timerTwo > .minutes"), 
+    document.querySelector(".timerTwo > button"), 
+    document.querySelector(".timerTwo .error"),
     true, () => {
     switchTimers(timerOne, timerTwo);
 });
