@@ -130,3 +130,11 @@ pauseButton.addEventListener("click", () => {
 // timerOne.updateTimer()
 
 // timerTwo.updateTimer()
+
+// * init
+    timersPaused = true;
+    timerOne.isPaused = true;
+    timerTwo.isPaused = true;
+
+    switchIsEnabled = false;
+    
