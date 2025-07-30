@@ -110,10 +110,18 @@ pauseButton.addEventListener("click", () => {
         switchTimers(lastTimerOn, notLastTimerOn);
         timersPaused = false;
         pauseButton.textContent = "pause"
+        switchIsEnabled = true;
+
     } else {
         timersPaused = true;
         clearTimeout(timerOne.timeoutId);
         clearTimeout(timerTwo.timeoutId);
+
+        timerOne.isPaused = true;
+        timerTwo.isPaused = true;
+
+        switchIsEnabled = false;
+
         pauseButton.textContent = "unpause"
     }
 
