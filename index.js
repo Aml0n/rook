@@ -148,8 +148,8 @@ timerOneSubmit.addEventListener("click", () => {
         timerOneError.textContent = "please type a number"
         
     } else {
-        timerOne.elapsedTimeMinutes = timerOneFieldMinutes.value;
-        timerOne.elapsedTimeSeconds = (timerOneFieldSeconds.value + 1);
+        timerOne.elapsedTimeMinutes = Number(timerOneFieldMinutes.value);
+        timerOne.elapsedTimeSeconds = (Number(timerOneFieldSeconds.value) + 1);
         timerOneError.textContent = "";
     }
 })
@@ -158,8 +158,8 @@ timerTwoSubmit.addEventListener("click", () => {
     if (timerTwoFieldMinutes.value === "" || timerTwoFieldSeconds.value === "") {
         timerTwoError.textContent = "please type a number"
     } else {
-        timerTwo.elapsedTimeMinutes = timerTwoFieldMinutes.value;
-        timerTwo.elapsedTimeSeconds = (timerTwoFieldSeconds.value + 1);
+        timerTwo.elapsedTimeMinutes = Number(timerTwoFieldMinutes.value);
+        timerTwo.elapsedTimeSeconds = (Number(timerTwoFieldSeconds.value) + 1);
         timerTwoError.textContent = "";
     }
 })
