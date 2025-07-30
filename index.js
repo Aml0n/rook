@@ -144,18 +144,24 @@ pauseButton.addEventListener("click", () => {
 });
 
 timerOneSubmit.addEventListener("click", () => {
-    if (timerOneFieldMinutes.value === "" || timerOneFieldMinutes.value === "") {
+    if (timerOneFieldMinutes.value === "" || timerOneFieldSeconds.value === "") {
         timerOneError.textContent = "please type a number"
         
     } else {
         timerOne.elapsedTimeMinutes = timerOneFieldMinutes.value;
-        timerOne.elapsedTimeSeconds = timerOneFieldSeconds.value;
+        timerOne.elapsedTimeSeconds = (timerOneFieldSeconds.value + 1);
+        timerOneError.textContent = "";
     }
 })
 
 timerTwoSubmit.addEventListener("click", () => {
-    timerTwo.elapsedTimeMinutes = timerTwoFieldMinutes.value;
-    timerTwo.elapsedTimeSeconds = timerTwoFieldSeconds.value;
+    if (timerTwoFieldMinutes.value === "" || timerTwoFieldSeconds.value === "") {
+        timerTwoError.textContent = "please type a number"
+    } else {
+        timerTwo.elapsedTimeMinutes = timerTwoFieldMinutes.value;
+        timerTwo.elapsedTimeSeconds = (timerTwoFieldSeconds.value + 1);
+        timerTwoError.textContent = "";
+    }
 })
 // timerOne.updateTimer()
 
