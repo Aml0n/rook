@@ -1,8 +1,9 @@
 const timerOneP = document.getElementById("timer1");
 const timerTwoP = document.getElementById("timer2");
 const intervalMs = 1000;
+const pauseButton = document.querySelector(".pause");
 
-let timersRunning = true;
+let timersPaused = true;
 
 function Timer(startingTimeSeconds, startingTimeMinutes, htmlTimer, isPaused, onComplete) {
     this.startingTimeSeconds = startingTimeSeconds;
@@ -50,7 +51,6 @@ function Timer(startingTimeSeconds, startingTimeMinutes, htmlTimer, isPaused, on
             // console.log(`${this.elapsedTimeSeconds}, ${this.elapsedTimeMinutes}`)
         }        
     }
-
 };
 
 function switchTimers(switchOn, switchOff) {
@@ -59,6 +59,8 @@ function switchTimers(switchOn, switchOff) {
     switchOff.isPaused = true;
     clearTimeout(switchOff.timeoutId);
     clearTimeout(switchOn.timeoutId);
+    lastTimerOn = switchOn;
+    notLastTimerOn = switchOff;
 
     switchOn.timeoutId = setTimeout(switchOn.updateTimer(), 1000);
     
@@ -72,6 +74,9 @@ let timerTwo = new Timer(10, 0, timerTwoP, true, () => {
     switchTimers(timerOne, timerTwo);
 });
 
+let lastTimerOn = timerOne;
+let notLastTimerOn = timerTwo;
+
 const switchButton = document.querySelector(".switch");
 let switchIsEnabled = true;
 switchButton.addEventListener("click", () => {
@@ -79,11 +84,12 @@ switchButton.addEventListener("click", () => {
         return;
     }
 
-    if (!timersRunning) {
-        timerOne.isPaused = false;
-        timerOne.updateTimer();
+    // if (timersPaused) {
+    //     timerOne.isPaused = false;
+    //     switchTimers(timerOne, timerTwo);
 
-    } else if (timerTwo.timerDone) {
+    // } else 
+    if (timerTwo.timerDone) {
         switchTimers(timerOne, timerTwo);
         switchIsEnabled = false;
     } else if (timerOne.timerDone) {
@@ -99,7 +105,20 @@ switchButton.addEventListener("click", () => {
     }
 })
 
+pauseButton.addEventListener("click", () => {
+    if (timersPaused) {
+        switchTimers(lastTimerOn, notLastTimerOn);
+        timersPaused = false;
+        pauseButton.textContent = "pause"
+    } else {
+        timersPaused = true;
+        clearTimeout(timerOne.timeoutId);
+        clearTimeout(timerTwo.timeoutId);
+        pauseButton.textContent = "unpause"
+    }
 
-timerOne.updateTimer()
 
-timerTwo.updateTimer()
+})
+// timerOne.updateTimer()
+
+// timerTwo.updateTimer()
