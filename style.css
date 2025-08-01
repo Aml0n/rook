@@ -21,8 +21,8 @@ main div#middleBar {
     /* background-color: #e7c246;
     background-color: #fcd75c; */
 
-    background-color: rgb(114, 0, 38);
-    background-color: rgb(255, 154, 105);
+    background-color: hsl(150, 100%, 22%);
+    /* background-color: rgb(255, 154, 105); */
 }
 
 div.timerOne {
@@ -32,9 +32,9 @@ div.timerOne {
     /* background-color: #768948; */
     /* background-color: #34623F; */
 
-    background-color: #4F000B;
+    background-color: hsl(148, 100%, 15%);
     /* 79, 0, 11 */
-    background-color: #FF7F51; 
+    /* background-color: #FF7F51;  */
     /* 255, 127, 81 */
 }
 
@@ -45,9 +45,9 @@ div.timerTwo {
     background-color: #607744; */
     /* background-color: #1E2F23; */
 
-    background-color: #CE4257;
+    background-color: hsl(141, 67%, 34%);
     /* 206, 66, 87 */
-    background-color: #ffb682; 
+    /* background-color: #ffb682;  */
     /* 255, 182, 130 */
 }
 
