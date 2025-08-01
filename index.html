@@ -10,23 +10,25 @@
   </head>
   <body>
     <main>
-        <h1>Rook</h1>  
-        <div class="timerOne">
+        <!-- <h1>Rook</h1>   -->
+        <div class="timer timerOne">
             <p id="timer1">1</p>
             <input type="number" class="minutes">
             <input type="number" class="seconds">
             <button class="submitButton">submit</button>
             <p class="error"></p>
         </div>
-        <div class="timerTwo">
+        <div id="middleBar">
+            <button class="switch">switch</button>
+            <button class="pause">start</button>
+        </div>
+        <div class="timer timerTwo">
             <p id="timer2">2</p>
             <input type="number" class="minutes">
             <input type="number" class="seconds">
             <button class="submitButton">submit</button>
             <p class="error"></p>
         </div>
-        <button class="switch">switch</button>
-        <button class="pause">start</button>
     </main>
     <script src="index.js"></script>
   </body>

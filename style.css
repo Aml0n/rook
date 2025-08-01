@@ -1,0 +1,57 @@
+html, body {
+    margin: 0;
+    padding: 0;
+
+}
+
+main div.timer {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: inline-block;
+    width: 100vw;
+    height: 45vh;
+    
+}
+
+main div#middleBar {
+    height: 10vh;
+    /* background-color: #A7754D; */
+
+    /* background-color: #e7c246;
+    background-color: #fcd75c; */
+
+    background-color: rgb(114, 0, 38);
+    background-color: rgb(255, 154, 105);
+}
+
+div.timerOne {
+    /* background-color: #598392;
+    background-color: #124559; */
+
+    /* background-color: #768948; */
+    /* background-color: #34623F; */
+
+    background-color: #4F000B;
+    /* 79, 0, 11 */
+    background-color: #FF7F51; 
+    /* 255, 127, 81 */
+}
+
+div.timerTwo {
+    /* background-color: #AEC3B0;
+    background-color: #EFF6E0; */
+/* 
+    background-color: #607744; */
+    /* background-color: #1E2F23; */
+
+    background-color: #CE4257;
+    /* 206, 66, 87 */
+    background-color: #ffb682; 
+    /* 255, 182, 130 */
+}
+
+main button {
+    margin: auto;
+    width: 50%;
+}
