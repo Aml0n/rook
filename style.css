@@ -36,39 +36,20 @@ div.timer input {
 
 main div#middleBar {
     height: 10vh;
-    /* background-color: #A7754D; */
 
-    /* background-color: #e7c246;
-    background-color: #fcd75c; */
-
-    background-color: hsl(150, 100%, 22%);
-    /* background-color: rgb(255, 154, 105); */
+    background-color: #c0cfb2;
+    /* background-color: #8ca78a; */
 }
 
 div.top-clock {
-    /* background-color: #598392;
-    background-color: #124559; */
-
-    /* background-color: #768948; */
-    /* background-color: #34623F; */
-
-    background-color: hsl(148, 100%, 15%);
-    /* 79, 0, 11 */
-    /* background-color: #FF7F51;  */
-    /* 255, 127, 81 */
+    background-color: #8ca78a;
+    /* background-color: #48644d; */
 }
 
 div.bottom-clock {
-    /* background-color: #AEC3B0;
-    background-color: #EFF6E0; */
-/* 
-    background-color: #607744; */
-    /* background-color: #1E2F23; */
+    background-color: #ecede8;
+    /* background-color: #c0cfb2; */
 
-    background-color: hsl(141, 67%, 34%);
-    /* 206, 66, 87 */
-    /* background-color: #ffb682;  */
-    /* 255, 182, 130 */
 }
 
 #middleBar button {
