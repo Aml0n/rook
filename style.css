@@ -23,13 +23,10 @@ html * {
 }
 
 main div.timer {
-    /* margin: 0;
-    padding: 0; */
     box-sizing: border-box;
     display: inline-block;
     width: 100vw;
-    height: 45vh;
-    
+    height: 40vh;
 }
 
 div.holder {
@@ -38,35 +35,45 @@ div.holder {
     justify-content: center;
 }
 
+.timer p {
+    font-size: 20vh;
+    padding: 1vh;
+    margin: 1vh;
+    color: #04002d;
+    /* color: #ecede8; */
+}
+
 div.timer {
     display: flex;
     place-items: center;
     margin: auto;
     max-width: 90vw;
+    margin: 2vh auto;
 }
 
 div.timer input {
     width: 70px;
-    height: 40vh;
-    /* max-height: 30px; */
-    padding: 0%;
+    height: 30px;
+    padding: 5px;
 }
 
 main div#middleBar {
-    height: 10vh;
-
+    height: 12vh;
     background-color: #c0cfb2;
     /* background-color: #8ca78a; */
+    /* background-color: #48644d; */
 }
 
 div.top-clock {
     background-color: #8ca78a;
     /* background-color: #48644d; */
+    /* background-color: #253528; */
 }
 
 div.bottom-clock {
     background-color: #ecede8;
     /* background-color: #c0cfb2; */
+    /* background-color: #8ca78a; */
 
 }
 
@@ -76,12 +83,10 @@ div.bottom-clock {
 }
 
 .submitButton {
-    /* padding: 8px 16px; */
     margin: 5px auto;
     cursor: pointer;
     min-width: 80px;
-    height: 10vh;
-    max-height: 30px;
+    height: 30px;
 }
 
 div.submit {
