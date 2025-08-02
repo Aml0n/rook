@@ -11,23 +11,37 @@
   <body>
     <main>
         <!-- <h1>Rook</h1>   -->
-        <div class="timer timerOne">
-            <p id="timer1">1</p>
-            <input type="number" class="minutes">
-            <input type="number" class="seconds">
-            <button class="submitButton">submit</button>
-            <p class="error"></p>
+        <div class="holder top-clock">
+            <div class="timer timerOne">
+                <p id="timer1">1</p>
+                <div class="submit">
+                    <input placeholder="minutes" type="number" class="minutes">
+                    <input placeholder="seconds" type="number" class="seconds">
+                   <button class="submitButton">submit</button>
+                </div>
+                <div>
+                    
+                </div>
+                <p class="error"></p>
+            </div>
         </div>
         <div id="middleBar">
             <button class="switch">switch</button>
             <button class="pause">start</button>
         </div>
-        <div class="timer timerTwo">
-            <p id="timer2">2</p>
-            <input type="number" class="minutes">
-            <input type="number" class="seconds">
-            <button class="submitButton">submit</button>
-            <p class="error"></p>
+        <div class="holder bottom-clock">
+            <div class="timer timerTwo">
+                <p id="timer2">2</p>
+                <div class="submit">
+                    <input placeholder="minutes" type="number" class="minutes">
+                    <input placeholder="seconds" type="number" class="seconds">
+                    <button class="submitButton">submit</button>
+                </div>
+                <div>
+                    
+                </div>
+                <p class="error"></p>
+            </div>
         </div>
     </main>
     <script src="index.js"></script>

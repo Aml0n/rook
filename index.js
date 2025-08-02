@@ -83,18 +83,18 @@ function switchTimers(switchOn, switchOff) {
 };
 
 let timerOne = new Timer(70, 0, timerOneP, 
-    document.querySelector(".timerOne > .seconds"), 
-    document.querySelector(".timerOne > .minutes"), 
-    document.querySelector(".timerOne > button"), 
+    document.querySelector(".timerOne .seconds"), 
+    document.querySelector(".timerOne .minutes"), 
+    document.querySelector(".timerOne > div.submit > button"), 
     document.querySelector(".timerOne .error"),
     false, () => {
         switchTimers(timerTwo, timerOne);
 });
 
 let timerTwo = new Timer(20, 0, timerTwoP, 
-    document.querySelector(".timerTwo > .seconds"), 
-    document.querySelector(".timerTwo > .minutes"), 
-    document.querySelector(".timerTwo > button"), 
+    document.querySelector(".timerTwo .seconds"), 
+    document.querySelector(".timerTwo .minutes"), 
+    document.querySelector(".timerTwo > div.submit > button"), 
     document.querySelector(".timerTwo .error"),
     true, () => {
     switchTimers(timerOne, timerTwo);
