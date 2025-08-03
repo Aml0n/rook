@@ -62,6 +62,7 @@ main div#middleBar {
     background-color: #c0cfb2;
     /* background-color: #8ca78a; */
     /* background-color: #48644d; */
+    display: flex;
 }
 
 div.top-clock {
@@ -79,7 +80,14 @@ div.bottom-clock {
 
 #middleBar button {
     margin: auto;
-    width: 50%;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border-style: solid;
+    border-color: rgb(119, 125, 125);
+    background-color: rgb(246, 249, 248);
+    height: 75%;
+    width: 30%;
+    /* aspect-ratio: 1.5; */
 }
 
 .submitButton {
