@@ -1,5 +1,5 @@
-const timerOneP = document.getElementById("timer1");
-const timerTwoP = document.getElementById("timer2");
+const timerOneP = document.querySelector(".timer1");
+const timerTwoP = document.querySelector(".timer2");
 const intervalMs = 1000;
 const pauseButton = document.querySelector(".pause");
 
@@ -16,10 +16,6 @@ function Timer(startingTimeSeconds, startingTimeMinutes, htmlTimer, fieldSeconds
     this.fieldMinutes = fieldMinutes;
     this.submitButton = submitButton;
 
-    this.timerCompleted = function() {
-
-    }
-
     this.elapsedTimeSeconds = this.startingTimeSeconds;
     this.elapsedTimeMinutes = this.startingTimeMinutes;
     this.isPaused = isPaused;
@@ -32,6 +28,7 @@ function Timer(startingTimeSeconds, startingTimeMinutes, htmlTimer, fieldSeconds
         } else {
             this.elapsedTimeMinutes = Number(this.fieldMinutes.value);
             this.elapsedTimeSeconds = (Number(this.fieldSeconds.value) + 1);
+            this.htmlTimer.textContent = `${String(this.elapsedTimeMinutes).padStart(2, "0")}:${String(this.elapsedTimeSeconds).padStart(2, "0")}`
             this.errorP.textContent = "";
         }
     })
@@ -174,4 +171,3 @@ pauseButton.addEventListener("click", () => {
 
     switchIsEnabled = false;
 
-// TODO: add html variables to the timer object
